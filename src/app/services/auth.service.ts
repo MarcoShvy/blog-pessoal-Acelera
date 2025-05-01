@@ -29,4 +29,8 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
+
+  register(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}usuarios`, data);
+  }
 }
