@@ -1,1 +1,26 @@
-<p>nav-bar works!</p>
+<nav class="navbar">
+    <div class="navbar-content">
+      <div class="logo">BLOG</div>
+      <ul class="nav-links">
+        <li><a routerLink="/">Home</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="/dashboard">Dashboard</a></li>
+        <li><a routerLink="/contato">Contact us</a></li>
+  
+        <li class="profile-dropdown" *ngIf="isLoggedIn">
+          <button mat-button [matMenuTriggerFor]="menu">
+            Seja bem-vindo, {{ nomeUsuario }}
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/perfil">👤 Meu Perfil</button>
+            <button mat-menu-item routerLink="/configuracoes">⚙️ Configurações</button>
+            <button mat-menu-item (click)="logout()">↩️ Sair</button>
+          </mat-menu>
+        </li>
+  
+        <li *ngIf="!isLoggedIn">
+          <a routerLink="/login">Login/Registro</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
