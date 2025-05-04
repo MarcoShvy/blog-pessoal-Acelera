@@ -6,10 +6,10 @@
   <mat-card-header>
     <mat-card-title>{{ post.titulo }}</mat-card-title>
     <mat-card-subtitle>
-      Por {{ post.autor }} em {{ post.data | date: 'dd/MM/yyyy' }}
+      Por {{ post.usuario }} em {{ post.data | date: 'dd/MM/yyyy' }}
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>{{ post.conteudo }}</p>
+    <p>{{ post.texto }}</p>
   </mat-card-content>
 </mat-card>

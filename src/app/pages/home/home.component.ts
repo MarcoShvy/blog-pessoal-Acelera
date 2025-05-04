@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent {
   timeFilter: string = 'all';
   searchQuery: string = '';
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadPosts();
@@ -49,13 +50,17 @@ export class HomeComponent {
       
       return true;
     }).filter(post => {
-      // Filtro de busca
       if (!this.searchQuery) return true;
       return (
         post.titulo.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        post.autor.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        post.conteudo.toLowerCase().includes(this.searchQuery.toLowerCase())
+        post.usuario.nome.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        post.texto.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     });
   }
+
+  navigateToPost(postId: number): void {
+    this.router.navigate(['/posts', postId]);
+  }
+
 }

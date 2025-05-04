@@ -4,7 +4,6 @@
       <ul class="nav-links">
         <li><a routerLink="/home">Home</a></li>
         <li *ngIf="isLoggedIn"><a routerLink="/dashboard">Dashboard</a></li>
-        <li><a routerLink="/contato">Contact us</a></li>
   
         <li class="profile-dropdown" *ngIf="isLoggedIn">
           <button mat-button [matMenuTriggerFor]="menu">

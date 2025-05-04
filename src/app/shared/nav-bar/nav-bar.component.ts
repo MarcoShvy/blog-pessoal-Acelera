@@ -18,7 +18,6 @@ export class NavBarComponent implements OnInit{
   ngOnInit(): void {
     this.authService.getUserLoggedInStatus().subscribe(status => {
       const token = this.authService.getDecodedToken();
-      console.log('Token decodificado:', token);
       this.isLoggedIn = status;
       this.nomeUsuario = token?.usuario || '';
       console.log(this.nomeUsuario)

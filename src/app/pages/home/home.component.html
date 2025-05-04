@@ -19,21 +19,22 @@
       </mat-form-field>
     </div>
   
-    <!-- Lista de Posts -->
     <div class="posts-list">
       <div *ngFor="let post of filteredPosts" class="post-item mat-elevation-z1">
         <div class="post-header">
-          <span class="author">{{ post.autor }}</span>
+          <span class="author">{{ post.usuario.nome }}</span>
           <span class="date">{{ post.data | date:'dd MMM yyyy' }}</span>
         </div>
         
         <h3 class="post-title">{{ post.titulo }}</h3>
-        <p class="post-excerpt">{{ post.conteudo | slice:0:150 }}...</p>
+        <p class="post-excerpt">{{ post.texto | slice:0:150 }}...</p>
         
         <div class="post-footer">
-          <button mat-button color="primary">CONTINUAR LENDO</button>
-          <span class="author-name">{{ post.autor }}</span>
-        </div>
+            <button mat-button color="primary" 
+                    [routerLink]="['/posts', post.id]">
+              CONTINUAR LENDO
+            </button>
+          </div>
         
         <mat-divider></mat-divider>
       </div>
