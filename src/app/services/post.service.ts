@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Post } from '../models/post.model';
 import { Observable } from 'rxjs';
 
@@ -26,4 +26,15 @@ export class PostService {
   deletePost(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  getPostagensFiltradas(autorId?: number, intervalo?: string): Observable<Post[]> {
+    let params = new HttpParams();
+    if (autorId) params = params.set('autor', autorId.toString());
+    if (intervalo) params = params.set('data', intervalo);
+  
+    return this.http.get<Post[]>(`${this.apiUrl}/filtro`, { params });
+  }
+  
+
+
 }

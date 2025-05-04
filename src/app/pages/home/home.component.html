@@ -1,0 +1,32 @@
+<mat-card>
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center">
+      <!-- Autor com autocomplete -->
+      <mat-form-field appearance="outline">
+        <mat-label>Autor</mat-label>
+        <input matInput [(ngModel)]="autorInput" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selecionarAutor($event.option.value)">
+          <mat-option *ngFor="let autor of autores | slice:0:5" [value]="autor">
+            {{ autor }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+  
+      <!-- Data -->
+      <mat-form-field appearance="outline">
+        <mat-label>Data</mat-label>
+        <mat-select [(ngModel)]="dataSelecionada">
+          <mat-option value="">Todas</mat-option>
+          <mat-option value="hoje">Hoje</mat-option>
+          <mat-option value="semana">Esta semana</mat-option>
+          <mat-option value="mes">Este mês</mat-option>
+          <mat-option value="ano">Este ano</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" (click)="filtrar()">Filtrar</button>
+    </div>
+  </mat-card>
+  
+  <!-- Componente de post -->
+  <app-posts></app-posts>
+  
