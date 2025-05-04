@@ -28,6 +28,8 @@ import { FormsModule } from '@angular/forms';
 import {MatDividerModule} from '@angular/material/divider';
 import { PostDetailComponent } from './components/posts/post-detail/post-detail.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PostCreateComponent } from './components/posts/post-create/post-create.component';
+import { CriarPostButtonComponent } from './shared/criar-post-button/criar-post-button.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CadastroComponent,
     NavBarComponent,
     HomeComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    PostCreateComponent,
+    CriarPostButtonComponent
   ],
   imports: [
     FormsModule,

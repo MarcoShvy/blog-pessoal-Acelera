@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Post } from '../models/post.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +11,8 @@ import { map } from 'rxjs/operators';
 export class PostService {
   
   private apiUrl = 'http://localhost:8080/api/postagens/';
-
-  constructor(private http: HttpClient) {}
+  
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(this.apiUrl);
@@ -37,8 +38,12 @@ export class PostService {
   }
   
 
-  createPost(post: Post): Observable<Post> {
-    return this.http.post<Post>(this.apiUrl, post);
+  createPost(postData: any): Observable<Post> {
+    return this.http.post<Post>(this.apiUrl, postData, {
+      headers: {
+        'Authorization': `Bearer ${this.authService.getToken()}`,
+      }
+    });
   }
 
   updatePost(id: number, post: Post): Observable<Post> {
@@ -56,6 +61,5 @@ export class PostService {
   
     return this.http.get<Post[]>(`${this.apiUrl}/filtro`, { params });
   }
-  
 
 }

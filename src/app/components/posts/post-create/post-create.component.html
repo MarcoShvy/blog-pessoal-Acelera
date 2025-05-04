@@ -1,0 +1,36 @@
+<div class="post-create-container">
+    <h1>Nova Postagem</h1>
+  
+    <form (ngSubmit)="onSubmit()" class="post-form mat-elevation-z3">
+      <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput [(ngModel)]="post.titulo" name="titulo" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Conteúdo</mat-label>
+        <textarea matInput [(ngModel)]="post.texto" name="texto"
+                  rows="10" required></textarea>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Tema</mat-label>
+        <mat-select [(ngModel)]="post.tema" name="tema" required>
+          <mat-option *ngFor="let tema of temas" [value]="tema">
+            {{ tema.descricao }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="form-actions">
+        <button mat-button type="button" routerLink="/">Cancelar</button>
+        <button mat-raised-button type="submit" color="primary"
+                [disabled]="isLoading || !post.titulo || !post.texto || !post.tema">
+          <mat-icon *ngIf="isLoading">
+            <mat-spinner diameter="20"></mat-spinner>
+          </mat-icon>
+          <span *ngIf="!isLoading">Publicar</span>
+        </button>
+      </div>
+    </form>
+  </div>
