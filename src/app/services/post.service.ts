@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class PostService {
   
-  private apiUrl = 'http://localhost:8080/api/postagens';
+  private apiUrl = 'http://localhost:8080/api/postagens/';
 
   constructor(private http: HttpClient) {}
 
@@ -18,18 +18,18 @@ export class PostService {
   }
 
   getPostById(id: number): Observable<Post> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.get<any>(`${this.apiUrl}${id}`).pipe(
       map(post => ({
         id: post.id,
         titulo: post.titulo,
         texto: post.texto,
         data: new Date(post.dataCriacao),
         usuario: {
-          id: 0, // valor fictício já que a API não retorna
+          id: 0,
           nome: post.nomeAutor || 'Anônimo'
         },
         tema: {
-          id: 0, // valor fictício também
+          id: 0,
           descricao: post.nomeTema || 'Tema indefinido'
         }
       }))

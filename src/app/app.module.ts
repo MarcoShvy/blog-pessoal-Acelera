@@ -27,6 +27,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { FormsModule } from '@angular/forms';
 import {MatDividerModule} from '@angular/material/divider';
 import { PostDetailComponent } from './components/posts/post-detail/post-detail.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { PostDetailComponent } from './components/posts/post-detail/post-detail.
     MatMenuModule,
     MatSelectModule,
     MatAutocompleteModule,
-    MatDividerModule
+    MatDividerModule,
+    MatPaginatorModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

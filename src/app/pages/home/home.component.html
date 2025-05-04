@@ -2,7 +2,7 @@
     <!-- Filtros -->
     <div class="filters-container mat-elevation-z2">
       <mat-form-field appearance="outline">
-        <mat-label>Buscar postagens</mat-label>
+        <mat-label>Buscar por autor</mat-label>
         <input matInput [(ngModel)]="searchQuery" (input)="applyFilters()">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
@@ -38,5 +38,12 @@
         
         <mat-divider></mat-divider>
       </div>
+      <mat-paginator [length]="filteredPosts.length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="[5, 10, 20]"
+               (page)="onPageChange($event)"
+               aria-label="Selecionar página">
+</mat-paginator>
+
     </div>
   </div>

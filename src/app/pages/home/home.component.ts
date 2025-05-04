@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
 import { Router } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,9 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   posts: Post[] = [];
   filteredPosts: Post[] = [];
+  pageSize = 5;
+  currentPage = 0;
+  paginatedPosts: Post[] = [];
   
   // Filtros
   timeFilter: string = 'all';
@@ -57,10 +61,25 @@ export class HomeComponent {
         post.texto.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     });
+
+    this.currentPage = 0;
+    this.updatePaginatedPosts();
   }
 
   navigateToPost(postId: number): void {
     this.router.navigate(['/posts', postId]);
   }
+
+
+updatePaginatedPosts(): void {
+  const start = this.currentPage * this.pageSize;
+  this.paginatedPosts = this.filteredPosts.slice(start, start + this.pageSize);
+}
+
+onPageChange(event: PageEvent): void {
+  this.currentPage = event.pageIndex;
+  this.pageSize = event.pageSize;
+  this.updatePaginatedPosts();
+}
 
 }
