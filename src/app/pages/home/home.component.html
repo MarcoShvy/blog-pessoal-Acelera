@@ -1,32 +1,41 @@
-<mat-card>
-    <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center">
-      <!-- Autor com autocomplete -->
+<div class="home-container">
+    <!-- Filtros -->
+    <div class="filters-container mat-elevation-z2">
       <mat-form-field appearance="outline">
-        <mat-label>Autor</mat-label>
-        <input matInput [(ngModel)]="autorInput" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selecionarAutor($event.option.value)">
-          <mat-option *ngFor="let autor of autores | slice:0:5" [value]="autor">
-            {{ autor }}
-          </mat-option>
-        </mat-autocomplete>
+        <mat-label>Buscar postagens</mat-label>
+        <input matInput [(ngModel)]="searchQuery" (input)="applyFilters()">
+        <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
   
-      <!-- Data -->
       <mat-form-field appearance="outline">
-        <mat-label>Data</mat-label>
-        <mat-select [(ngModel)]="dataSelecionada">
-          <mat-option value="">Todas</mat-option>
-          <mat-option value="hoje">Hoje</mat-option>
-          <mat-option value="semana">Esta semana</mat-option>
-          <mat-option value="mes">Este mês</mat-option>
-          <mat-option value="ano">Este ano</mat-option>
+        <mat-label>Filtrar por data</mat-label>
+        <mat-select [(value)]="timeFilter" (selectionChange)="applyFilters()">
+          <mat-option value="all">Todas</mat-option>
+          <mat-option value="today">Hoje</mat-option>
+          <mat-option value="week">Esta semana</mat-option>
+          <mat-option value="month">Este mês</mat-option>
+          <mat-option value="year">Este ano</mat-option>
         </mat-select>
       </mat-form-field>
-  
-      <button mat-raised-button color="primary" (click)="filtrar()">Filtrar</button>
     </div>
-  </mat-card>
   
-  <!-- Componente de post -->
-  <app-posts></app-posts>
-  
+    <!-- Lista de Posts -->
+    <div class="posts-list">
+      <div *ngFor="let post of filteredPosts" class="post-item mat-elevation-z1">
+        <div class="post-header">
+          <span class="author">{{ post.autor }}</span>
+          <span class="date">{{ post.data | date:'dd MMM yyyy' }}</span>
+        </div>
+        
+        <h3 class="post-title">{{ post.titulo }}</h3>
+        <p class="post-excerpt">{{ post.conteudo | slice:0:150 }}...</p>
+        
+        <div class="post-footer">
+          <button mat-button color="primary">CONTINUAR LENDO</button>
+          <span class="author-name">{{ post.autor }}</span>
+        </div>
+        
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+  </div>
