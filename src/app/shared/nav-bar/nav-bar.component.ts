@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit{
       const token = this.authService.getDecodedToken();
       this.isLoggedIn = status;
       this.nomeUsuario = token?.usuario || '';
-      console.log(this.nomeUsuario)
+      
     });
   }
 

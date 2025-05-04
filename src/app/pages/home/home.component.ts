@@ -19,6 +19,7 @@ export class HomeComponent {
   // Filtros
   timeFilter: string = 'all';
   searchQuery: string = '';
+authService: any;
 
   constructor(private postService: PostService, private router: Router) {}
 

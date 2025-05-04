@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap, BehaviorSubject } from 'rxjs';
+import { Observable, tap, BehaviorSubject, of } from 'rxjs';
 import { Usuario } from '../models/usuarios.model'
 @Injectable({
   providedIn: 'root'
@@ -61,6 +61,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('Usuario');
+    localStorage.removeItem('token')
     this.clearUser();
     this.userLoggedIn.next(false);
   }
@@ -92,5 +93,14 @@ export class AuthService {
 
   register(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}usuarios`, data);
+  }
+
+  isAuthenticated(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      return of(false);
+    }
+    return of(true);
   }
 }

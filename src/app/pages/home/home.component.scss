@@ -67,4 +67,10 @@
     mat-divider {
       margin-top: 1.5rem;
     }
+
+    .button {
+        display: flex;
+    flex-direction: column;
+        
+    }
   }

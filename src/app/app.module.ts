@@ -30,7 +30,7 @@ import { PostDetailComponent } from './components/posts/post-detail/post-detail.
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PostCreateComponent } from './components/posts/post-create/post-create.component';
 import { CriarPostButtonComponent } from './shared/criar-post-button/criar-post-button.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,8 @@ import { CriarPostButtonComponent } from './shared/criar-post-button/criar-post-
     HomeComponent,
     PostDetailComponent,
     PostCreateComponent,
-    CriarPostButtonComponent
+    CriarPostButtonComponent,
+    
   ],
   imports: [
     FormsModule,
@@ -61,7 +62,8 @@ import { CriarPostButtonComponent } from './shared/criar-post-button/criar-post-
     MatSelectModule,
     MatAutocompleteModule,
     MatDividerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
