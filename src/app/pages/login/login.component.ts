@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
     this.loginForm = this.fb.group({
       usuario: ['', Validators.required],
       senha: ['', Validators.required]
@@ -21,9 +22,17 @@ export class LoginComponent {
   onLogin(): void {
     this.authService.login(this.loginForm.value).subscribe({
       next: () => this.router.navigate(['/']),
-      error: err => console.error('Login failed', err)
+      error: () => {
+        this.snackBar.open('Usuário ou senha incorretos.', 'Fechar', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['snack-bar-error']
+        });
+      }
     });
   }
+  
   goToRegister(): void {
     this.router.navigate(['/register']);
     }

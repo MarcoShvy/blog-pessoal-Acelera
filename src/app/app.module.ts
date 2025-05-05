@@ -35,6 +35,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MatListModule } from '@angular/material/list';
 import { EditarPostComponent } from './components/posts/editar-post/editar-post.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { EditarPostComponent } from './components/posts/editar-post/editar-post.
     MatDividerModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
