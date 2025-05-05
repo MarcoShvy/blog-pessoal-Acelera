@@ -72,6 +72,10 @@ export class CadastroComponent {
       verticalPosition: 'top',
       panelClass: ['snack-bar-error']
     });
+
+    setTimeout(() => {
+      document.activeElement instanceof HTMLElement && document.activeElement.blur();
+    }, 0);
   
     snackBarRef.onAction().subscribe(() => snackBarRef.dismiss());
   }
