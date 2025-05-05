@@ -28,7 +28,6 @@ export class AuthService {
     
     // Para debug - use subscribe para ver o valor atual
     this.currentUser.subscribe(current => {
-      console.log('Usuário atual (dentro do subscribe):', current);
     });
   }
 
