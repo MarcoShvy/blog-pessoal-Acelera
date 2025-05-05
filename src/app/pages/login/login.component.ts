@@ -23,11 +23,15 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe({
       next: () => this.router.navigate(['/']),
       error: () => {
-        this.snackBar.open('Usuário ou senha incorretos.', 'Fechar', {
-          duration: 3000,
+        const snackBarRef = this.snackBar.open('Usuário ou senha incorretos.', 'Fechar', {
+          duration: 5000,
           horizontalPosition: 'center',
           verticalPosition: 'top',
           panelClass: ['snack-bar-error']
+        });
+  
+        snackBarRef.onAction().subscribe(() => {
+          snackBarRef.dismiss();
         });
       }
     });
