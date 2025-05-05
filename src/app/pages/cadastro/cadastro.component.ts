@@ -58,10 +58,11 @@ export class CadastroComponent {
         setTimeout(() => this.router.navigate(['/login']), 3000);
       },
       error: err => {
+        this.loading = false;
         if (err.error && err.error.message) {
           alert(err.error.message);
         } else {
-          alert('Erro ao registrar. Tente novamente.');
+          alert('Erro ao registrar, Usuário existente!. Tente novamente.');
         }
         
       }
