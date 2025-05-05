@@ -53,10 +53,13 @@ Este projeto foi desenvolvido como parte do programa Acelera Maker da Montreal, 
 ## Relatório de aprendizados do projeto.
 
 Experiência prática com Angular 16/Angular Material.
-Dificuldades com integração com API no front-end onde o curso na udemy me deu um norte para entender como funcionava por completo
-problema com CORS onde mudei back-end para conseguir liberar acessos especificos a usuários logados
+
+Dificuldades com integração com API no front-end onde o curso na udemy me deu um norte para entender como funcionava por completo.
+
+problema com CORS onde mudei back-end para conseguir liberar acessos especificos a usuários logados.
 
 ## Features
 
-Implementar configurações de usuários para adicionar foto e uma bio para seu perfil
-criação de temas personalizadas para posts
+Implementar configurações de usuários para adicionar foto e uma bio para seu perfil.
+
+criação de temas personalizadas para posts.
