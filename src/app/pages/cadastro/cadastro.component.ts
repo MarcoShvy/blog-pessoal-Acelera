@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
@@ -16,7 +17,7 @@ export class CadastroComponent {
   loading = false;
   successMessage = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
     this.registerForm = this.fb.group({
       nome: ['', Validators.required],
       usuario: ['', Validators.required],
@@ -32,10 +33,17 @@ export class CadastroComponent {
   }
 
   onRegister(): void {
-    if (this.registerForm.invalid) return;
-
+    if (this.registerForm.invalid) {
+      if (this.registerForm.get('senha')?.errors?.['minlength']) {
+        this.showSnackBar('A senha deve ter no mínimo 6 caracteres.');
+      } else if (this.registerForm.errors?.['senhasDiferentes']) {
+        this.showSnackBar('As senhas não coincidem.');
+      }
+      return;
+    }
+  
     this.loading = true;
-
+  
     const dados = {
       nome: this.registerForm.value.nome,
       usuario: this.registerForm.value.usuario,
@@ -43,19 +51,31 @@ export class CadastroComponent {
       foto: this.fotoUrl,
       tipoUsuario: 'COMUM'
     };
-
+  
     this.authService.register(dados).subscribe({
       next: () => {
         this.successMessage = 'Conta criada com sucesso! Redirecionando para login...';
         setTimeout(() => this.router.navigate(['/login']), 3000);
       },
       error: err => {
-        console.error('Erro no registro:', err);
         this.loading = false;
+        const errorMsg = err?.error?.message || 'Erro ao criar conta.';
+        this.showSnackBar(errorMsg);
       }
     });
   }
-
+  
+  private showSnackBar(message: string): void {
+    const snackBarRef = this.snackBar.open(message, 'Fechar', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['snack-bar-error']
+    });
+  
+    snackBarRef.onAction().subscribe(() => snackBarRef.dismiss());
+  }
+  
   goToLogin(): void {
     this.router.navigate(['/login']);
   }
