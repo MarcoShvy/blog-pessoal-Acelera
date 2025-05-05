@@ -17,9 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
-            "baseHref": "/",
-            "deployUrl": "/",
+            "outputPath": "dist/blog-pessoal",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
