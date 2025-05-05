@@ -1,0 +1,55 @@
+.background {
+    height: 100vh;
+    background-color: #dcdcdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .login-title {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1f1f2e;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .rounded .mat-mdc-form-field-outline {
+    border-radius: 10px !important;
+  }
+  
+  .login-button {
+    background-color: #ffda58;
+    color: #1f1f2e;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px;
+    height: 45px;
+  }
+  
+  .register-link {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .register-link a {
+    cursor: pointer;
+    color: #1f1f2e;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  

@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Editar Postagem</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="salvar()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Título</mat-label>
+      <input matInput [(ngModel)]="postEditado.titulo" name="titulo" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Conteúdo</mat-label>
+      <textarea matInput [(ngModel)]="postEditado.texto" name="texto" rows="6" required></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+</mat-dialog-actions>

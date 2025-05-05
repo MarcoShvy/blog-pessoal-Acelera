@@ -1,0 +1,28 @@
+<mat-card *ngIf="usuario" class="perfil-card">
+    <mat-card-header>
+      <div mat-card-avatar class="perfil-foto" [ngStyle]="{ 'background-image': 'url(' + usuario.foto + ')' }"></div>
+      <mat-card-title>{{ usuario.nome }}</mat-card-title>
+      <mat-card-subtitle>{{ usuario.usuario }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  
+  <h2 style="text-align:center; margin-top: 20px;">Minhas Postagens</h2>
+  
+  <div *ngFor="let post of postsUsuario" style="margin: 20px auto; max-width: 600px;">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ post.titulo }}</mat-card-title>
+        <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-left:auto;">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="abrirDialogoEdicao(post)">Editar</button>
+            <button mat-menu-item (click)="excluirPost(post.id!)">Excluir</button>
+        </mat-menu>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ post.texto }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

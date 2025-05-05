@@ -1,0 +1,49 @@
+<div class="register-container">
+  <mat-card class="register-card">
+    <h2 class="tittle">REGISTRAR</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuário</mat-label>
+        <input matInput formControlName="usuario" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Senha</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="senha" required>
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Confirmar Senha</mat-label>
+        <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmarSenha" required>
+        <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" type="button">
+          <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div class="loading" *ngIf="loading">
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+
+      <div class="success" *ngIf="successMessage">{{ successMessage }}</div>
+
+      <button mat-flat-button id="register-button" class="full-width" type="submit" [disabled]="loading">
+        REGISTRAR
+      </button>
+    </form>
+
+    <p class="link-text">
+      Já possui conta?
+      <a (click)="goToLogin()">Clique aqui!</a>
+    </p>
+  </mat-card>
+</div>

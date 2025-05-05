@@ -1,0 +1,28 @@
+
+
+<div class="background">
+    <div class="login-card">
+      <h2 class="login-title">LOGIN</h2>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuário</mat-label>
+          <input matInput formControlName="usuario" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="senha" required>
+        </mat-form-field>
+  
+        <button mat-flat-button type="submit" class="login-button">
+          ENTRAR
+        </button>
+      </form>
+  
+      <div class="register-link">
+        <a (click)="goToRegister()">Não possui conta? Clique aqui!</a>
+      </div>
+    </div>
+  </div>
+  

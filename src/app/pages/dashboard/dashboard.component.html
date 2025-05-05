@@ -1,0 +1,31 @@
+<div class="dashboard-container">
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-card-title>Visão Geral do Blog</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stats-container">
+          <div class="stat-card">
+            <mat-icon class="stat-icon">article</mat-icon>
+            <div class="stat-value">{{ totalPosts }}</div>
+            <div class="stat-label">Total de Postagens</div>
+          </div>
+        </div>
+  
+        <div class="chart-container">
+          <canvas id="postsChart"></canvas>
+        </div>
+  
+        <div class="latest-posts">
+          <h3>Últimas Postagens</h3>
+          <mat-list>
+            <mat-list-item *ngFor="let post of latestPosts">
+              <mat-icon matListItemIcon>article</mat-icon>
+              <div matListItemTitle>{{ post.titulo }}</div>
+              <div matListItemLine>Por {{ post.usuario.nome }} em {{ post.data | date:'dd/MM/yyyy' }}</div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
