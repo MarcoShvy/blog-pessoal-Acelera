@@ -10,6 +10,13 @@ O objetivo da aplicação é um blog para que usuários possam ler posts que pos
 
 ---
 
+## 🚀 Deploy
+
+- 🔗 **Frontend (Angular):** https://blog-pessoal-acelera-g6btnn239-marcoshvys-projects.vercel.app/home
+
+---
+
+
 ## ✨ Funcionalidades
 
 - ✅ CRUD completo de postagens (criar, visualizar, editar e excluir).
@@ -39,11 +46,6 @@ O objetivo da aplicação é um blog para que usuários possam ler posts que pos
 
 ---
 
-## 🚀 Deploy
-
-- 🔗 **Frontend (Angular):** https://blog-pessoal-acelera-g6btnn239-marcoshvys-projects.vercel.app/home
-
----
 
 ## Desenvolvido no Programa Acelera Maker
 Este projeto foi desenvolvido como parte do programa Acelera Maker da Montreal, tem como objetivo a criação de um blog pessoal utilizando framework Angular para melhorar as capacidades em front end.
