@@ -16,8 +16,8 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="editarPost(post.id!)">Editar</button>
-          <button mat-menu-item (click)="excluirPost(post.id!)">Excluir</button>
+            <button mat-menu-item (click)="abrirDialogoEdicao(post)">Editar</button>
+            <button mat-menu-item (click)="excluirPost(post.id!)">Excluir</button>
         </mat-menu>
       </mat-card-header>
       <mat-card-content>

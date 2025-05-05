@@ -7,6 +7,7 @@ import { PostDetailComponent } from './components/posts/post-detail/post-detail.
 import { PostCreateComponent } from './components/posts/post-create/post-create.component';
 import { AuthGuard } from './guards/auth.guards';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'posts/:id', component: PostDetailComponent },
   { path: 'create', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

@@ -51,8 +51,8 @@ export class PostService {
     });
   }
 
-  updatePost(id: number, post: Post): Observable<Post> {
-    return this.http.put<Post>(`${this.apiUrl}${id}`, post);
+  updatePostagem(id: number, postagem: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}${id}`, postagem);
   }
 
   deletePost(id: number): Observable<void> {
@@ -68,7 +68,8 @@ export class PostService {
   }
 
   getPostsByUser(userId: number): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.apiUrl}filtro?autor${userId}`);
+    console.log(userId)
+    return this.http.get<Post[]>(`${this.apiUrl}filtro?autor=${userId}`);
   }
 
 }

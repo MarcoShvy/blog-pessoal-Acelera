@@ -25,13 +25,16 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule } from '@angular/forms';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { PostDetailComponent } from './components/posts/post-detail/post-detail.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PostCreateComponent } from './components/posts/post-create/post-create.component';
 import { CriarPostButtonComponent } from './shared/criar-post-button/criar-post-button.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MatListModule } from '@angular/material/list';
+import { EditarPostComponent } from './components/posts/editar-post/editar-post.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     PostCreateComponent,
     CriarPostButtonComponent,
     PerfilComponent,
+    DashboardComponent,
+    EditarPostComponent,
     
   ],
   imports: [
@@ -65,7 +70,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     MatAutocompleteModule,
     MatDividerModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
