@@ -26,13 +26,10 @@ export class LoginComponent {
         const snackBarRef = this.snackBar.open('Usuário ou senha incorretos.', 'Fechar', {
           duration: 5000,
           horizontalPosition: 'center',
-          verticalPosition: 'top',
-          panelClass: ['snack-bar-error']
+          verticalPosition: 'top'
         });
   
-        snackBarRef.onAction().subscribe(() => {
-          snackBarRef.dismiss();
-        });
+        snackBarRef.onAction().subscribe(() => snackBarRef.dismiss());
       }
     });
   }
