@@ -13,10 +13,10 @@ O objetivo da aplicação é um blog para que usuários possam ler posts que pos
 ## ✨ Funcionalidades
 
 - ✅ CRUD completo de postagens (criar, visualizar, editar e excluir).
-  -/home - para visualizar posts
-  -/login - para logar no site
-  -/register - para se registrar
-  -/perfil - ver perfil do usuário atualmente e poder editar e/ou excluir posts
+  - /home - para visualizar posts
+  - /login - para logar no site
+  - /register - para se registrar
+  - /perfil - ver perfil do usuário atualmente e poder editar e/ou excluir posts
 - 🧑‍💻 Cada post contém: título, conteúdo, autor e data.
 - 📊 Dashboard com:
   - Número total de postagens.
