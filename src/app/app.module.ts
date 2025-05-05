@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/app/interceptor/auth.interceptor';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -57,6 +57,7 @@ import { EditarPostComponent } from './components/posts/editar-post/editar-post.
     BrowserModule,
     AppRoutingModule,
   
+    CommonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
