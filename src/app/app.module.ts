@@ -31,6 +31,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { PostCreateComponent } from './components/posts/post-create/post-create.component';
 import { CriarPostButtonComponent } from './shared/criar-post-button/criar-post-button.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     PostDetailComponent,
     PostCreateComponent,
     CriarPostButtonComponent,
+    PerfilComponent,
     
   ],
   imports: [

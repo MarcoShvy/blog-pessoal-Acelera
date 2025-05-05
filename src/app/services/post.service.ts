@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Post } from '../models/post.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,7 +11,12 @@ import { AuthService } from './auth.service';
 export class PostService {
   
   private apiUrl = 'http://localhost:8080/api/postagens/';
-  
+
+  token = localStorage.getItem('token')
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.token}`
+  });
+
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   getAllPosts(): Observable<Post[]> {
@@ -47,11 +52,11 @@ export class PostService {
   }
 
   updatePost(id: number, post: Post): Observable<Post> {
-    return this.http.put<Post>(`${this.apiUrl}/${id}`, post);
+    return this.http.put<Post>(`${this.apiUrl}${id}`, post);
   }
 
   deletePost(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}${id}`);
   }
 
   getPostagensFiltradas(autorId?: number, intervalo?: string): Observable<Post[]> {
@@ -60,6 +65,10 @@ export class PostService {
     if (intervalo) params = params.set('data', intervalo);
   
     return this.http.get<Post[]>(`${this.apiUrl}/filtro`, { params });
+  }
+
+  getPostsByUser(userId: number): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.apiUrl}filtro?autor${userId}`);
   }
 
 }

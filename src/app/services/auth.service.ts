@@ -78,17 +78,12 @@ export class AuthService {
     return this.userLoggedIn.asObservable();
   }
 
-  getDecodedToken(): any {
-    const token = this.getToken();
-    if (!token) return null;
-
-    try {
-      const payload = token.split('.')[1];
-      return JSON.parse(atob(payload));
-    } catch (e) {
-      console.error('Erro ao decodificar o token:', e);
-      return null;
-    }
+  getUsernameFromToken(): string {
+    const token = localStorage.getItem('token');
+    if (!token) return '';
+    
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.usuario;
   }
 
   register(data: any): Observable<any> {
@@ -103,4 +98,5 @@ export class AuthService {
     }
     return of(true);
   }
+
 }
