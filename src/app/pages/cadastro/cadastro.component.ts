@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
@@ -16,7 +17,7 @@ export class CadastroComponent {
   loading = false;
   successMessage = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
     this.registerForm = this.fb.group({
       nome: ['', Validators.required],
       usuario: ['', Validators.required],
@@ -67,4 +68,7 @@ export class CadastroComponent {
     });
   }
   
+  goToLogin(): void {
+    this.router.navigate(['/login']);
+  }
 }
