@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
@@ -17,7 +16,7 @@ export class CadastroComponent {
   loading = false;
   successMessage = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = this.fb.group({
       nome: ['', Validators.required],
       usuario: ['', Validators.required],
@@ -35,9 +34,9 @@ export class CadastroComponent {
   onRegister(): void {
     if (this.registerForm.invalid) {
       if (this.registerForm.get('senha')?.errors?.['minlength']) {
-        this.showSnackBar('A senha deve ter no mínimo 6 caracteres.');
+        alert('A senha deve ter no mínimo 6 caracteres.');
       } else if (this.registerForm.errors?.['senhasDiferentes']) {
-        this.showSnackBar('As senhas não coincidem.');
+        alert('As senhas não coincidem.');
       }
       return;
     }
@@ -58,29 +57,14 @@ export class CadastroComponent {
         setTimeout(() => this.router.navigate(['/login']), 3000);
       },
       error: err => {
-        this.loading = false;
-        const errorMsg = err?.error?.message || 'Erro ao criar conta.';
-        this.showSnackBar(errorMsg);
+        if (err.error && err.error.message) {
+          alert(err.error.message);
+        } else {
+          alert('Erro ao registrar. Tente novamente.');
+        }
+        
       }
     });
   }
   
-  private showSnackBar(message: string): void {
-    const snackBarRef = this.snackBar.open(message, 'Fechar', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      panelClass: ['snack-bar-error']
-    });
-
-    setTimeout(() => {
-      document.activeElement instanceof HTMLElement && document.activeElement.blur();
-    }, 0);
-  
-    snackBarRef.onAction().subscribe(() => snackBarRef.dismiss());
-  }
-  
-  goToLogin(): void {
-    this.router.navigate(['/login']);
-  }
 }
