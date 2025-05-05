@@ -11,7 +11,7 @@ import { Usuario } from '../models/usuarios.model';
 })
 export class PostService {
   
-  private apiUrl = 'http://localhost:8080/api/postagens/';
+  private apiUrl = 'https://blog-pessoal-ve28.onrender.com/api/postagens/';
 
   token = localStorage.getItem('token')
   headers = new HttpHeaders({
@@ -74,6 +74,6 @@ export class PostService {
   }
 
   getAuthors(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`http://localhost:8080/api/usuarios`);
+    return this.http.get<Usuario[]>(`https://blog-pessoal-ve28.onrender.com/api/usuarios`);
   }
 }

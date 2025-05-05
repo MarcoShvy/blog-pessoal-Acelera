@@ -6,7 +6,7 @@ import { Usuario } from '../models/usuarios.model'
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api/';
+  private apiUrl = 'https://blog-pessoal-ve28.onrender.com/api/';
   private userLoggedIn = new BehaviorSubject<boolean>(this.isLoggedIn());
   private currentUserSubject = new BehaviorSubject<Usuario | null>(null);
   public currentUser = this.currentUserSubject
