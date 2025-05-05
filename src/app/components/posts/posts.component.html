@@ -1,29 +1,15 @@
-<p>posts works!</p>
-<mat-card>
-    <form [formGroup]="postForm" (ngSubmit)="savePost()">
-      <mat-form-field appearance="fill">
-        <mat-label>Título</mat-label>
-        <input matInput formControlName="titulo" required />
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Conteúdo</mat-label>
-        <textarea matInput formControlName="conteudo"></textarea>
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Autor</mat-label>
-        <input matInput formControlName="autor" required />
-      </mat-form-field>
-  
-      <button mat-raised-button color="primary" type="submit">Salvar</button>
-    </form>
-  </mat-card>
-  
-  <mat-card *ngFor="let post of posts">
-    <h2>{{ post.titulo }}</h2>
-    <p>{{ post.conteudo }}</p>
-    <small>Autor: {{ post.autor }} | {{ post.data | date }}</small>
-    <button mat-button color="warn" (click)="deletePost(post.id!)">Excluir</button>
-  </mat-card>
-  
+<div *ngIf="posts.length === 0">
+  <p>Nenhuma postagem encontrada.</p>
+</div>
+
+<mat-card *ngFor="let post of posts" style="margin-top: 16px;">
+  <mat-card-header>
+    <mat-card-title>{{ post.titulo }}</mat-card-title>
+    <mat-card-subtitle>
+      Por {{ post.usuario }} em {{ post.data | date: 'dd/MM/yyyy' }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ post.texto }}</p>
+  </mat-card-content>
+</mat-card>

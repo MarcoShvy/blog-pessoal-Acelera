@@ -1,0 +1,27 @@
+.post-create-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+  
+    h1 {
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #3f51b5;
+    }
+  }
+  
+  .post-form {
+    padding: 2rem;
+  
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }

@@ -16,12 +16,20 @@ export class NavBarComponent implements OnInit{
   
 
   ngOnInit(): void {
+    const usuarioStr = localStorage.getItem('Usuario');
+
     this.authService.getUserLoggedInStatus().subscribe(status => {
-      const token = this.authService.getDecodedToken();
-      console.log('Token decodificado:', token);
       this.isLoggedIn = status;
-      this.nomeUsuario = token?.usuario || '';
-      console.log(this.nomeUsuario)
+      const usuarioStr = localStorage.getItem('Usuario');
+    if (usuarioStr) {
+      try {
+        const usuarioObj = JSON.parse(usuarioStr);
+        this.nomeUsuario = usuarioObj.usuario || 'Usuário';
+      } catch (error) {
+        console.error('Erro ao fazer parse do usuário:', error);
+      }
+    }
+      
     });
   }
 

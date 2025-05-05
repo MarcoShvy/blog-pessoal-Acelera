@@ -1,0 +1,28 @@
+<div class="post-detail-container">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+  
+    <div *ngIf="post" class="post-content mat-elevation-z3">
+      <h1>{{ post.titulo }}</h1>
+      
+      <div class="post-meta">
+        <!-- Navegação segura com ?. e fallback -->
+         
+        <span>Por {{ post.usuario.nome || 'Anônimo' }}</span>
+
+        <span>{{ post.data | date:'mediumDate' }}</span>
+      </div>
+  
+      <div class="post-body">
+        <p>{{ post.texto }}</p>
+      </div>
+  
+      <button mat-raised-button color="primary" routerLink="/">
+        <mat-icon>arrow_back</mat-icon> Voltar
+      </button>
+    </div>
+  
+    <div *ngIf="!post && !loading" class="not-found">
+      <mat-icon>error_outline</mat-icon>
+      <h2>Post não encontrado</h2>
+    </div>
+  </div>
