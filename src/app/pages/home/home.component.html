@@ -2,8 +2,8 @@
     <!-- Filtros -->
     <div class="filters-container mat-elevation-z2">
       <mat-form-field appearance="outline">
-        <mat-label>Buscar por autor</mat-label>
-        <input matInput [(ngModel)]="searchQuery" (input)="applyFilters()">
+        <mat-label>Buscar</mat-label>
+        <input matInput [(ngModel)]="searchQuery" (input)="applyFilters()" placeholder="Título, autor ou conteúdo">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
   
@@ -18,17 +18,16 @@
         </mat-select>
       </mat-form-field>
     </div>
-
-    <div class="button" >
-
-        <app-criar-post-button></app-criar-post-button>
-    
+  
+    <div class="button">
+      <app-criar-post-button></app-criar-post-button>
     </div>
        
     <div class="posts-list">
-      <div *ngFor="let post of filteredPosts" class="post-item mat-elevation-z1">
+      <!-- Mostra os posts paginados -->
+      <div *ngFor="let post of paginatedPosts" class="post-item mat-elevation-z1">
         <div class="post-header">
-          <span class="author">{{ post.usuario.nome }}</span>
+          <span class="author">{{ post.usuario?.nome || 'Autor desconhecido' }}</span>
           <span class="date">{{ post.data | date:'dd MMM yyyy' }}</span>
         </div>
         
@@ -36,20 +35,27 @@
         <p class="post-excerpt">{{ post.texto | slice:0:150 }}...</p>
         
         <div class="post-footer">
-            <button mat-button color="primary" 
-                    [routerLink]="['/posts', post.id]">
-              CONTINUAR LENDO
-            </button>
-          </div>
+          <button mat-button color="primary" [routerLink]="['/posts', post.id]">
+            CONTINUAR LENDO
+          </button>
+        </div>
         
         <mat-divider></mat-divider>
       </div>
-      <mat-paginator [length]="filteredPosts.length"
-               [pageSize]="pageSize"
-               [pageSizeOptions]="[5, 10, 20]"
-               (page)="onPageChange($event)"
-               aria-label="Selecionar página">
-</mat-paginator>
-
+  
+      <!-- Paginação -->
+      <mat-paginator *ngIf="filteredPosts.length > pageSize"
+                     [length]="filteredPosts.length"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="pageSizeOptions"
+                     (page)="onPageChange($event)"
+                     aria-label="Selecionar página">
+      </mat-paginator>
+  
+      <!-- Mensagem quando não há posts -->
+      <div *ngIf="filteredPosts.length === 0" class="no-posts">
+        <mat-icon>info</mat-icon>
+        <p>Nenhum post encontrado com os filtros atuais</p>
+      </div>
     </div>
   </div>

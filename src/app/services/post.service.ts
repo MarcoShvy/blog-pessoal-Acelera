@@ -4,6 +4,7 @@ import { Post } from '../models/post.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { Usuario } from '../models/usuarios.model';
 
 @Injectable({
   providedIn: 'root',
@@ -64,7 +65,7 @@ export class PostService {
     if (autorId) params = params.set('autor', autorId.toString());
     if (intervalo) params = params.set('data', intervalo);
   
-    return this.http.get<Post[]>(`${this.apiUrl}/filtro`, { params });
+    return this.http.get<Post[]>(`${this.apiUrl}filtro`, { params });
   }
 
   getPostsByUser(userId: number): Observable<Post[]> {
@@ -72,4 +73,7 @@ export class PostService {
     return this.http.get<Post[]>(`${this.apiUrl}filtro?autor=${userId}`);
   }
 
+  getAuthors(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`http://localhost:8080/api/usuarios`);
+  }
 }
