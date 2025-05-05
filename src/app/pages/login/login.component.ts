@@ -23,7 +23,7 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe({
       next: () => this.router.navigate(['/']),
       error: () => {
-        window.alert('Usuário ou senha incorretos.');
+        alert('Usuário ou senha incorretos.');
       }
     });
   }
