@@ -13,7 +13,7 @@ O objetivo da aplicação é um blog para que usuários possam ler posts que pos
 ## 🚀 Deploy
 
 - 🔗 **Frontend (Angular):** https://blog-pessoal-acelera-g6btnn239-marcoshvys-projects.vercel.app/home
-
+- 🔗 **Backend (SpringBoot):** https://blog-pessoal-ve28.onrender.com
 ---
 
 
