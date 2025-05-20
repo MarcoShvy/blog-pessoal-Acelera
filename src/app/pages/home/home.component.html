@@ -22,7 +22,11 @@
     <div class="button">
       <app-criar-post-button></app-criar-post-button>
     </div>
-       
+      
+    <div *ngIf="isLoading" class="loading-spinner">
+      <mat-spinner diameter="50" color="primary"></mat-spinner>
+    </div>
+    
     <div class="posts-list">
       <!-- Mostra os posts paginados -->
       <div *ngFor="let post of paginatedPosts" class="post-item mat-elevation-z1">

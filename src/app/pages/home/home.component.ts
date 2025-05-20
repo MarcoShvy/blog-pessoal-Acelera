@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   filteredPosts: Post[] = [];
   paginatedPosts: Post[] = [];
   
-
+  isLoading = true;
   pageSize = 5;
   currentPage = 0;
   pageSizeOptions = [5, 10, 20];
@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
       next: (posts) => {
         this.posts = posts;
         this.applyFilters();
+        this.isLoading = false;
       },
       error: (err) => console.error('Erro ao carregar posts:', err)
     });
